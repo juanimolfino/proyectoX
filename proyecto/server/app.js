@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const User = require('./models/User')
+const cors = require('cors')
 
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,
@@ -9,6 +10,8 @@ mongoose.connect('mongodb://localhost:27017/proyecto', {
     useUnifiedTopology: true,
     useFindAndModify: false
 });
+
+app.use(cors())
 
 app.get('/', async (req, res) => {
     const users = await User.find({})
