@@ -4,6 +4,12 @@ const mongoose = require('mongoose')
 const User = require('./models/User')
 const cors = require('cors')
 
+//Requiero las rutas:
+const postRoutes = require('./routes/post')
+
+//Uso las rutas:
+app.use('/', postRoutes)
+
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,
     useCreateIndex: true,
