@@ -10,16 +10,32 @@ const Post = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    views: Number,
-    fav: Number, // aca fav debe ser tal vez una tabla donde relaciones los fav que guarda cada usuario. y vista desde una publicacion que cantidad de vistos tiene
-    comments: String, // aca lo mismo, supongo que sera una tabla que relacione comentario, usuario que lo realizo y la publicacion donde se hizo
-    // image:  no se que tipo de dato sera una imagen, video lo mismo
     description: {
         type: String,
         required: true
     },
-    Supplies: String,
-    // hay que ver el tema de los pasos, como hacer para modularizar la info que se va guardando al ser varios pasos
+    gender: {
+        type: Schema.Types.ObjectId,
+        ref: 'Gender'
+    },
+    subGender: {
+        type: Schema.Types.ObjectId,
+        ref: 'subGender'
+    },
+    comment: { // COMO ES EL TEMA DE LOS ARREGLOS EN MONGODB??
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    },
+    like: Number,
+    fav: Number, // hay que ver como funciona esto
+
+
+  
+
+    // image:  no se que tipo de dato sera una imagen, video lo mismo
+    
+    
+
 });
 
 module.exports = mongoose.model('Post', Post)
