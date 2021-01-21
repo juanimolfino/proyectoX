@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 import './App.css';
 
 function App() {
@@ -13,14 +13,10 @@ function App() {
       })
       .catch(error => console.log('hubo un error', error));
   }
-  if (!users.length) {
-    getUsers();
-    console.log('tendria que salir data')
-  } else {
-    console.log('listo')
-  }
+
   return (
     <div className="App">
+      <button onClick={() => {getUsers()}}></button>
       {users.map((u, i) => <h1 key={i}>{u.name}</h1>)}
     </div>
   );

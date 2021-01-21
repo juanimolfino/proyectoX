@@ -11,13 +11,16 @@ mongoose.connect('mongodb://localhost:27017/proyecto', {
     useFindAndModify: false
 });
 
+// Middlewere
 app.use(cors())
 
+
+// Routes
 app.get('/', async (req, res) => {
     const users = await User.find({})
     res.json(users)
 })
 
-app.listen('8080', () => {
+app.listen(8080, () => {
     console.log('listen at port 8080')
 })
