@@ -3,19 +3,14 @@ const app = express();
 const mongoose = require('mongoose')
 const User = require('./models/User')
 const cors = require('cors')
+var bodyParser = require('body-parser');
 
 
-
-
-=======
 // Middlewere
 app.use(cors()); // esto tiene que ir antes de las rutas
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-//Requiero las rutas:
-const postRoutes = require('./routes/post')
-
-//Uso las rutas:
-app.use('/post', postRoutes)
 
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,

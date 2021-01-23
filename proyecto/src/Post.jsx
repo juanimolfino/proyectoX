@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Post({data}){
+function Post({data, index}){
     return (
-        <div className='card'>
+        <div className='card' key={index}>
             <div className='card-body'>
             <h1>{data.title}</h1>
             <p>{data.description}</p>

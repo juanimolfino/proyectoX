@@ -1,15 +1,19 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import './MainNavBar.css'
+import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weather'>  </NavLink> 
 
 function MainNavbar() {
     return <Navbar bg="dark" expand="lg" className='MainNavBar'>
-                <Navbar.Brand className='MainNavBar' href="#home">El proyeco de los pibes</Navbar.Brand>
+                <Navbar.Brand className='MainNavBar' href="#home">El proyecto de los pibes</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link className='MainNavBar' href="#home">Home</Nav.Link>
-                <Nav.Link className='MainNavBar' href="#link">Link</Nav.Link>
+                <NavLink to='/post/new'> Crear un nuevo post </NavLink>
+                   {/*  <Nav.Link className='MainNavBar' href="#link">Crear un nuevo post</Nav.Link> */}
+
+               
                 <NavDropdown  title="Dropdown" id="basic-nav-dropdown">
                     <NavDropdown.Item  href="#action/3.1">Action</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

@@ -16,7 +16,7 @@ function HomePost() {
   return (
     <div className="HomePost">
       {/* <button onClick={() => {getUsers()}}></button> */}
-      {postsData.map((data, i) => <Post data={data}/>)}
+      {postsData.map((data, i) => <Post data={data} index={i} key={i}/>)}
     </div>
   );
 }

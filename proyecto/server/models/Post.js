@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// form ==> title, description, gender, subgender, steps
+
 const Post = new Schema({
     title: {
         type: String, 
