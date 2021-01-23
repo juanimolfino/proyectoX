@@ -6,10 +6,10 @@ const Gender = new Schema({
         type: String,
         required: true
     },
-    // subGender: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'subGender'
-    // },
+    subGender: {
+        type: Schema.Types.ObjectId,
+        ref: 'subGender'
+    }
 });
 
 module.exports = mongoose.model('Gender', Gender)

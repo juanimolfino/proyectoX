@@ -4,8 +4,10 @@ import './App.css';
 
 function App() {
   const [users, setUsers] = useState([]);
+
   useEffect(function () {
     fetch('http://localhost:8080/users')
+
       .then(response => response.json())
       .then(data => {
         setUsers(data);

@@ -22,12 +22,15 @@ const Post = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'subGender'
     },
-    comment: { // COMO ES EL TEMA DE LOS ARREGLOS EN MONGODB??
+    comment: [{ // dentro de post se guarda un arreglo de id de los comentarios que son respectivos a este post
         type: Schema.Types.ObjectId,
         ref: 'Comment'
-    },
+    }],
     like: Number,
-    fav: Number, // hay que ver como funciona esto
+    fav: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 
 
   
