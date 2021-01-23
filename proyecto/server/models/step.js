@@ -18,7 +18,7 @@ const Step = new Schema({
         type: String,
         required: true
     },
-    //imagenes, videos, archivos???
+    //imagenes, videos, archivos??? imagenes cloudinary, videos youtube y pedimos URL, y archivos ni idea.
     description: {
         type: String,
         required: true

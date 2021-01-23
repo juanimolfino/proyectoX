@@ -4,11 +4,14 @@ const mongoose = require('mongoose')
 const User = require('./models/User')
 const cors = require('cors')
 
+// Middlewere
+app.use(cors()); // esto tiene que ir antes de las rutas
+
 //Requiero las rutas:
 const postRoutes = require('./routes/post')
 
 //Uso las rutas:
-app.use('/', postRoutes)
+app.use('/post', postRoutes)
 
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,
@@ -16,10 +19,6 @@ mongoose.connect('mongodb://localhost:27017/proyecto', {
     useUnifiedTopology: true,
     useFindAndModify: false
 });
-
-// Middlewere
-app.use(cors())
-
 
 // Routes
 app.get('/', async (req, res) => {

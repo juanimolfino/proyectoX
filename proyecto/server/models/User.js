@@ -15,7 +15,11 @@ const User = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    }, 
+    fav: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
 })
 
 module.exports = mongoose.model('User', User)

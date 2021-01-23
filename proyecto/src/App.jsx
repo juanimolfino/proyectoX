@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   const [users, setUsers] = useState([]);
   const getUsers = function () {
-    fetch('http://localhost:8080/')
+    fetch('http://localhost:8080/post/')
       .then(response => response.json())
       .then(data => {
         setUsers(data);
