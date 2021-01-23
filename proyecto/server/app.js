@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost:27017/proyecto', {
 });
 
 // Routes
-app.get('/', async (req, res) => {
+app.get('/users', async (req, res) => {
     const users = await User.find({})
     res.json(users)
 })

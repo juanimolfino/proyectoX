@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router()
-const User = require('../models/User')
+const Post = require('../models/Post')
 
-router.get('/', async (req, res) => {
-    const users = await User.find({})
-    res.json(users)
+router.get('/posts', async (req, res) => {
+    const posts = await Post.find({})
+    res.json(posts)
 })
 
 module.exports = router;
