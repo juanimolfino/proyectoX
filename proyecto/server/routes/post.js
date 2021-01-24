@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     const { title, description, gender } = req.body;
     const newPost = new Post({ title: title, description: description });
     await newPost.save();
-    res.send();
+    res.send('OOOOOOKKKKK');
 })
 
 module.exports = router;

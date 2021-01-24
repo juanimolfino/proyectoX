@@ -7,9 +7,10 @@ var bodyParser = require('body-parser');
 
 
 // Middlewere
+
 app.use(cors()); // esto tiene que ir antes de las rutas
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 
 mongoose.connect('mongodb://localhost:27017/proyecto', {

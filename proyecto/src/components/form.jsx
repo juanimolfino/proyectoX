@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; // { useState, useEffect, useRef }
 // import {Redirect} from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios'
 
 function FormPost({ history }) {
     const [input, setInput] = useState({
@@ -26,14 +27,19 @@ function FormPost({ history }) {
     //     onSubmit()
     // }}
 
-    const submit = (e) => {
-        e.preventDefault();
-        history.push('/'); // <-- Objeto history
-      }
-
+        
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios //es como el fetch, pero con fetch el objeto me llegaba bacio a la base de datos
+    .post('http://localhost:8080/post', input)
+    .then(() => console.log('Post Created'))
+    .catch(err => {
+      console.error(err);
+    });
+};
     return (
         <div>
-            <form method='post' action='http://localhost:8080/post'  autoComplete='off' onSubmit={submit}>
+            <form autoComplete='off' onSubmit={handleSubmit}>
                 <div>
                     <label>Title:</label>
                     <input type="text" name='title' value={input.title} onChange={handleInputChange}/>
@@ -51,7 +57,7 @@ function FormPost({ history }) {
                     </select>
                 </div>
                 <div>
-                    <input type="submit" value='Enviar'/>
+                    <input type="submit" value='Submit'/>
                 </div>
             </form>
         </div>
