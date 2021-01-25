@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
 const Post = require('../models/Post');
+const Gender = require('../models/gender');
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -15,6 +16,7 @@ db.once("open", () => {
 });
 
 const seedDB = async () => {
+    // datos para usuarios
     await User.deleteMany({});
     for (let i = 0; i < 10; i++) {
         const user = new User({
@@ -25,6 +27,7 @@ const seedDB = async () => {
         })
         await user.save();
     }
+    // datos para posteos
     await Post.deleteMany({});
     for (let i = 0; i < 10; i++) {
         const post = new Post({
@@ -35,6 +38,15 @@ const seedDB = async () => {
         })
         await post.save();
     }
+    // datos para generos
+    await Gender.deleteMany({});
+    const genders = ['Garden', 'Syntetic Drugs']
+    for (let i = 0; i < 1; i++) {
+        const g = new Gender({
+           gender: genders[i],
+        });
+    await g.save();
+}
 }
 
 seedDB().then(() => {
