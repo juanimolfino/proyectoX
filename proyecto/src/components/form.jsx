@@ -1,9 +1,8 @@
 import React, { useState } from 'react'; // { useState, useEffect, useRef }
-// import {Redirect} from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'; // esto me permite traer el history para usarlo
 import axios from 'axios'
 
-function FormPost({ history }) {
+function FormPost({ history }) { // el history lo importo con withrouter, supuestamente te sirve para manejar el historial del navegador
     const [input, setInput] = useState({
         title: '',
         description: '',
@@ -18,21 +17,13 @@ function FormPost({ history }) {
         })
     }
 
-    // function onSubmit(){
-    //     return  <Redirect  to="/" />
-    //  }
-
-    // onSubmit={(e) => {
-    //     e.preventDefault();
-    //     onSubmit()
-    // }}
-
-        
+       
   const handleSubmit = (event) => {
     event.preventDefault();
     axios //es como el fetch, pero con fetch el objeto me llegaba bacio a la base de datos
     .post('http://localhost:8080/post', input)
     .then(() => console.log('Post Created'))
+    .then(() => history.push('/'))
     .catch(err => {
       console.error(err);
     });

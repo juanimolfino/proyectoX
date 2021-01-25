@@ -11,11 +11,12 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
+    console.log(req.body) // ojo con el gender que si no lo elige viene vacio
     const { title, description, gender } = req.body;
     const newPost = new Post({ title: title, description: description });
     await newPost.save();
     res.send('OOOOOOKKKKK');
+    //res.redirect('/');
 })
 
 module.exports = router;
