@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weath
 
 function MainNavbar() {
     return <Navbar bg="dark" expand="lg" className='MainNavBar'>
-                <Navbar.Brand className='MainNavBar' href="#home">El proyecto de los pibes</Navbar.Brand>
+                <Navbar.Brand className='MainNavBar' href="/">El proyecto de los pibes</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
