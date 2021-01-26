@@ -33,20 +33,19 @@ const seedDB = async () => {
         const post = new Post({
            title: 'El mejor post del universo',
            description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
-           
-           
+                     
         })
         await post.save();
     }
     // datos para generos
     await Gender.deleteMany({});
-    const genders = ['Garden', 'Syntetic Drugs']
-    for (let i = 0; i < 1; i++) {
+    const genders = ['Garden', 'Syntetic Drugs', 'voodo']
+    for (let i = 0; i < genders.length; i++) {
         const g = new Gender({
            gender: genders[i],
         });
-    await g.save();
-}
+        await g.save();    
+    }
 }
 
 seedDB().then(() => {
