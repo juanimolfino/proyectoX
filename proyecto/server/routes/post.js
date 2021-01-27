@@ -3,8 +3,6 @@ const router = express.Router();
 const Post = require('../models/Post');
 const Gender = require('../models/gender');
 
-
-
 router.get('/', async (req, res) => {
     const posts = await Post.find({})
     res.json(posts)
@@ -36,10 +34,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/deletePost', async(req, res) => {
     console.log(req.body)
-    const { id } = req.body;
+    const { _id } = req.body;
     
    
-    Post.removeById(id, (err, data) => {
+    Post.findByIdAndDelete(_id, (err, data) => {
         if(err) return console.log(err);
         //console.log('soy el genero', data);
         return res.send();

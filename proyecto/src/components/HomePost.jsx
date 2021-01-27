@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post'
 import axios from 'axios'
+import '../syles/HomePost.css'
 
 function HomePost() {
   const [postsData, setPostsData] = useState([]);

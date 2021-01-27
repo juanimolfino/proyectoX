@@ -1,8 +1,8 @@
 import React from 'react'
-
+import '../syles/Post.css' 
 function Post({data, index, deletePost}){
     return (
-        <div className='card' key={index}>
+        <div className='Post' key={index}>
             <div className='card-body'>
             <h1>{data.title}</h1>
             <p>{data.description}</p>
