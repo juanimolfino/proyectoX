@@ -16,18 +16,19 @@ db.once("open", () => {
 });
 
 const seedDB = async () => {
-    // datos para usuarios
+
+    // DATOS DE USUARIOS
     await User.deleteMany({});
     for (let i = 0; i < 10; i++) {
         const user = new User({
            name: `Elizabeth ${i}`,
            password: `1234`,
-           email:`eli@${i}.com`
-           
+           email:`eli@${i}.com`           
         })
         await user.save();
     }
-    // datos para posteos
+
+    // DATOS DE POSTEOS
     await Post.deleteMany({});
     for (let i = 0; i < 10; i++) {
         const post = new Post({
@@ -37,7 +38,8 @@ const seedDB = async () => {
         })
         await post.save();
     }
-    // datos para generos
+    
+    // DATOS DE GENEROS
     await Gender.deleteMany({});
     const genders = ['Garden', 'Syntetic Drugs', 'voodo']
     for (let i = 0; i < genders.length; i++) {

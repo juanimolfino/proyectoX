@@ -5,6 +5,7 @@ const User = require('./models/User')
 const cors = require('cors')
 var bodyParser = require('body-parser');
 
+const PORT = 8080;
 
 // Middlewere
 
@@ -12,7 +13,7 @@ app.use(cors()); // esto tiene que ir antes de las rutas
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
+// Coneccion con base de datos
 mongoose.connect('mongodb://localhost:27017/proyecto', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -29,7 +30,7 @@ app.use('/post', postRoutes)
 app.use('/user', userRoutes)
 
 
-
-app.listen(8080, () => {
+// Conexion con puerto
+app.listen(PORT, () => {
     console.log('listen at port 8080')
 })
