@@ -25,7 +25,6 @@ function HomePost({ history }) {
 
   return (
     <div className="HomePost">
-      {/* <button onClick={() => {getUsers()}}></button> */}
       {postsData.map((data, i) => <Post data={data} index={i} key={i} deletePost={deletePostById}/>)}
     </div>
   );

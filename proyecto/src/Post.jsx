@@ -6,7 +6,7 @@ function Post({data, index, deletePost}){
             <div className='card-body'>
             <h1>{data.title}</h1>
             <p>{data.description}</p>
-            <button onClick={() => deletePost(data._id)}>Delete</button>
+            <button onClick={() => deletePost(data._id)}>Delete</button> {/* Le paso una funcion por props, aca se la asigno al boton, este la dispara y le pasa el id en cuestion */}
             </div>
         </div>
     )
