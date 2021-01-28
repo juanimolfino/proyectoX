@@ -46,7 +46,7 @@ function FormPost({ history }) { // el history lo importo con withrouter, supues
 // USE EFFECT
 
 useEffect(() => {
-    fetch('http://localhost:8080/post/gender')
+    fetch('http://localhost:8080/post/gender/gender')
     .then(response => response.json())
     .then(data => {
         setGendersDB(data)

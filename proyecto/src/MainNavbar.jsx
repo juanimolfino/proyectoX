@@ -10,14 +10,13 @@ function MainNavbar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link className='MainNavBar' href="#home">Home</Nav.Link>
-                <Nav.Link className='MainNavBar' to='/post/new'> Crear un nuevo post </Nav.Link>
+                <NavLink className='MainNavBar nav-link' to='/post/new'> Crear un nuevo post </NavLink>
                    {/*  <Nav.Link className='MainNavBar' href="#link">Crear un nuevo post</Nav.Link> */}
 
                
                 <NavDropdown  title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item  href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                    <NavLink className='MainNavBar nav-link' to='/post/voodo'> Voodo </NavLink>
+                    <NavLink className='MainNavBar nav-link' to='/post/Garden'> Garden </NavLink>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                 </NavDropdown>
