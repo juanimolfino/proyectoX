@@ -12,7 +12,7 @@ function HomePost({ history }) {
       .then(response => response.json())
       .then(data => {
         setPostsData(data);
-        console.log(data)
+        //console.log(data)
       })
       .catch(error => console.log('hubo un error', error));
   }, [])

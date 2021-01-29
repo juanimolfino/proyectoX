@@ -9,12 +9,12 @@ function MainNavbar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                <Nav.Link className='MainNavBar' href="#home">Home</Nav.Link>
+                {/* <Nav.Link className='MainNavBar' href="#home">Home</Nav.Link> */}
                 <NavLink className='MainNavBar nav-link' to='/post/new'> Crear un nuevo post </NavLink>
                    {/*  <Nav.Link className='MainNavBar' href="#link">Crear un nuevo post</Nav.Link> */}
 
                
-                <NavDropdown  title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown  title="Generos" id="basic-nav-dropdown">
                     <NavLink className='MainNavBar nav-link' to='/post/voodo'> Voodo </NavLink>
                     <NavLink className='MainNavBar nav-link' to='/post/Garden'> Garden </NavLink>
                     <NavDropdown.Divider />
