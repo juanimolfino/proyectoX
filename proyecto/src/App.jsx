@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
-import HomePost from './HomePost';
-import MainNavbar from './MainNavbar';
+import HomePost from '../src/components/HomePost';
+import MainNavbar from './components/MainNavbar';
 import Form from './components/form';
-import EditPost from './editPost';
+import EditPost from './components/editPost';
 import GenderPost from './components/GenderPost';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom';
-import './editPost.css'
+import '../syles/editPost.css'
 
 function EditPost({ id, history }) {
 //console.log('soy el HISTORY',history)
@@ -15,9 +15,7 @@ function EditPost({ id, history }) {
         fetch(`http://localhost:8080/post/postById/${id}/`)
             .then(response => response.json())
             .then(post => {
-                setPostDataById(
-                    post
-                );
+                setPostDataById(post);
             })
             .catch(error => console.log('hubo un error', error));
     }, [id]) // si usamos aca adentro un valor de un estado que se actualiza y depende del use efect y se vuelve a actualizar, loopea hasta infinito 

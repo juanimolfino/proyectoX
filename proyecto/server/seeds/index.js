@@ -18,6 +18,7 @@ db.once("open", () => {
 const seedDB = async () => {
     // DATOS DE GENEROS
     await Gender.deleteMany({});
+    await Post.deleteMany({});
     const genders = ['Garden', 'Syntetic Drugs', 'voodo']
     for (let i = 0; i < genders.length; i++) {
         const newGender = new Gender({

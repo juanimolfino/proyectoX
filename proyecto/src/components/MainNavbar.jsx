@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import './MainNavBar.css'
+import '../syles/MainNavBar.css'
 import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weather'>  </NavLink> 
 
 function MainNavbar() {

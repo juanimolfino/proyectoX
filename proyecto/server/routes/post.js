@@ -52,26 +52,28 @@ router.post('/', async (req, res) => {
 
 // DELETE POST FROM DB BY ID
 router.delete('/deletePost', async (req, res) => {
-    console.log(req.body)
-    const { _id } = req.body;    
+    //console.log(req.body)
+    const { _id } = req.body;
+
     Post.findByIdAndDelete(_id, (err, data) => {
-        if (err) return console.log('Error, no pudo eliminar', err);
-        return res.send();
+        if (err) return res.status(400).send('error al borrar')
+        
     })
-        .then(() => {
-            console.log("Data deleted"); // Success 
-            return res.send();
-        })
-        .catch(function (error) {
-            console.log(error); // Failure
-            return res.status(400).send('error al borrar')
-        });
+    return res.send();
+        // .then(() => {
+        //     console.log("Data deleted"); // Success 
+        //     return res.send();
+        // })
+        // .catch(function (error) {
+        //     console.log(error); // Failure
+        //     return res.status(400).send('error al borrar')
+        // });
 });
 
 // UPDATE POST
 
 router.put('/updatePost', async (req, res) => {
-    console.log('ME LLEGO ESTO', req.body)
+    //console.log('ME LLEGO ESTO', req.body)
     const { _id, title, description } = req.body;    
 
     Post.findByIdAndUpdate(_id, {title, description},function (err, docs) {
@@ -83,7 +85,7 @@ router.put('/updatePost', async (req, res) => {
             }
         })
 
-    res.send()
+    return res.send()
 });
 
 module.exports = router;
