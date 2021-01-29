@@ -1,0 +1,11 @@
+.Post{
+    text-align: center;
+    width: 28%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 50px !important;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}

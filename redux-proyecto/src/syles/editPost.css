@@ -1,0 +1,15 @@
+.inputConfig {
+    width: 600px;
+    margin: 10px;
+}
+.textareaConfig {
+    width: 600px;
+    height: 400px;
+    margin: 10px;
+}
+
+.containerInputEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
