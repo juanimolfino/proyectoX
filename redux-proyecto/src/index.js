@@ -5,11 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// REDUX
+import { Provider } from 'react-redux'; // habilita redux a los componentes, ademas les comparte el store.
+import store from './store'
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}> {/* REDUX */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
