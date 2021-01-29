@@ -4,6 +4,14 @@ import axios from 'axios'
 
 import Gender from './genders.jsx';
 
+// REDUX
+// import { connect } from 'react-redux'; // nos permite conectar el componente de react con redux, nos habilita las props q necesita como estados del store redux y funciones de actions
+// import addTodo from '../actions' ejemplo
+
+// luego podemos usar por props las actions y los estados, props.blabla
+// un ejemplo de uso seria disparar un actions importado/conectado para usar para disparar un fetch o algo con useEffect al cargar la pagina
+
+
 function FormPost({ history }) { // el history lo importo con withrouter, supuestamente te sirve para manejar el historial del navegador
 
 // REACT STATES
@@ -12,35 +20,9 @@ function FormPost({ history }) { // el history lo importo con withrouter, supues
         title: '',
         description: '',
         gender: '',
-       // subGender: ''
     })
     // State to get genders from DB
     const [gendersDB, setGendersDB] = useState([]);
-
-    // State to validate information
-    // const [error, setError] = React.useState({ // otra forma de escribir multiples estados, pero tenemos solo 1 funcion para definir estados, setInput
-    //     title: '',
-    //     description: '',
-    //     gender: '',
-    //  });
-
-
-// VALIDATE INPUT
-
-// function validate(input, error) {
-//     let errors = {};
-//     if (!input.title) {
-//       errors.title = 'Title is Required';
-//     } 
-  
-//     if (!input.description) {
-//       errors.description = 'Description is Required';
-//     } 
-    
-//     return {
-//       ...errors
-//     };
-//   }
 
 
 // USE EFFECT
@@ -60,10 +42,6 @@ useEffect(() => {
             ...input,
             [e.target.name]: e.target.value
         });
-        // setError(validate({
-        //     ...input,
-        //     [e.target.name]: e.target.value
-        // }, error))
     }       
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -76,9 +54,7 @@ useEffect(() => {
             });
         };
 
-   
 // RENDER
-
     return (
         <div>
             <form autoComplete='off' onSubmit={handleSubmit}>
@@ -106,4 +82,14 @@ useEffect(() => {
 }
 
 
+// function mapStateToProps(state) {
+//     return {
+//       movie: state.movieDetail
+//     }
+//   }
+
+
+
 export default withRouter(FormPost)
+// export default connect(null, {addTodo} )(AddTodo);
+// export default connect(mapStateToProps, {getTodoDetail})(TodoDetail)

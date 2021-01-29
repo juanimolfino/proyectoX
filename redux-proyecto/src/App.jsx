@@ -1,11 +1,15 @@
+// REACT
 import React from 'react';
 import { Route } from 'react-router-dom';
+
+// COMPONENTS
 import HomePost from '../src/components/HomePost';
 import MainNavbar from './components/MainNavbar';
 import Form from './components/form';
 import EditPost from './components/editPost';
 import GenderPost from './components/GenderPost';
 
+// CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
