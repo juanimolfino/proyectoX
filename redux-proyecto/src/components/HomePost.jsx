@@ -17,6 +17,7 @@ function HomePost({ history }) {
       .catch(error => console.log('hubo un error', error));
   }, [])
 
+
   function deletePostById(id) {
     axios.delete(`http://localhost:8080/post/deletePost`, {data: {_id: id}})
     .then(() => {

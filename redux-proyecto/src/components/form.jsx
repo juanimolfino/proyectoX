@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react'; // { useState, useEffect, useRef }
 import { withRouter } from 'react-router-dom'; // esto me permite traer el history para usarlo
-import axios from 'axios'
 
 import Gender from './genders.jsx';
 
 // REDUX
-// import { connect } from 'react-redux'; // nos permite conectar el componente de react con redux, nos habilita las props q necesita como estados del store redux y funciones de actions
+import { connect } from 'react-redux'; // nos permite conectar el componente de react con redux, nos habilita las props q necesita como estados del store redux y funciones de actions
 // import addTodo from '../actions' ejemplo
+import { createPost, getGenders } from '../actions'
 
 // luego podemos usar por props las actions y los estados, props.blabla
 // un ejemplo de uso seria disparar un actions importado/conectado para usar para disparar un fetch o algo con useEffect al cargar la pagina
 
-
-function FormPost({ history }) { // el history lo importo con withrouter, supuestamente te sirve para manejar el historial del navegador
-
+function FormPost({ history, createPost, getGenders, genders }) { // el history lo importo con withrouter, supuestamente te sirve para manejar el historial del navegador
 // REACT STATES
     // State to DB
     const [input, setInput] = useState({
@@ -21,20 +19,12 @@ function FormPost({ history }) { // el history lo importo con withrouter, supues
         description: '',
         gender: '',
     })
-    // State to get genders from DB
-    const [gendersDB, setGendersDB] = useState([]);
-
 
 // USE EFFECT
-
 useEffect(() => {
-    fetch('http://localhost:8080/post/gender/gender')
-    .then(response => response.json())
-    .then(data => {
-        setGendersDB(data)
-       })
-    .catch(error => console.log('hubo un error', error));
-}, []);
+    getGenders() // esta funcion trae los generos cargados en la DB
+}, [getGenders]);
+
 
 // FUNCTIONS
     function handleInputChange(e) {
@@ -43,17 +33,13 @@ useEffect(() => {
             [e.target.name]: e.target.value
         });
     }       
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        axios //es como el fetch, pero con fetch el objeto me llegaba bacio a la base de datos
-        .post('http://localhost:8080/post', input)
-        .then(() => console.log('Post Created'))
-        .then(() => history.push('/'))
-        .catch(err => {
-        console.error(err);
-            });
-        };
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        createPost(input) // Actions redux - crea en la base de datos un post
+        .then(() => history.push('/'));
+        };
+        
 // RENDER
     return (
         <div>
@@ -69,8 +55,8 @@ useEffect(() => {
                 <div>
                     <label>Choose a Gender:</label>
                     <select id="gender" name="gender" onChange={handleInputChange}>
-                            <option value="">Choose...</option>                      
-                             {gendersDB.map((data, i) => <Gender data={data} key={i}/>)}     {/* se necesita 1 componente para mostrar el listado */}                   
+                            <option value="">Choose...</option>                                 
+                           {genders.map((data, i) => <Gender data={data} key={i}/>)}            {/* genders esta traido de redux */}   
                     </select>
                 </div>
                 <div>
@@ -82,14 +68,12 @@ useEffect(() => {
 }
 
 
-// function mapStateToProps(state) {
-//     return {
-//       movie: state.movieDetail
-//     }
-//   }
+function mapStateToProps(state) {
+    return {
+      genders: state.gendersDB // si necesitas mas propiedades del store las agregas al objeto. el nombre de la izquierda no importa le pones el que quieras.
+    }
+  }
 
 
-
-export default withRouter(FormPost)
-// export default connect(null, {addTodo} )(AddTodo);
-// export default connect(mapStateToProps, {getTodoDetail})(TodoDetail)
+export default connect( mapStateToProps, { createPost, getGenders })(withRouter(FormPost));
+// export default connect( mapStateToProps, { createPost, getGenders })(FormPost);

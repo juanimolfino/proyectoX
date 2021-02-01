@@ -11,7 +11,7 @@ import store from './store'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}> {/* REDUX */}
+    <Provider store={store}> {/* REDUX, engloba a nuestra app y le da acceso al store de redux */}
       <BrowserRouter>
         <App />
       </BrowserRouter>

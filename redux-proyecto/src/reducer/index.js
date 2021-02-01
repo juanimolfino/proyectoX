@@ -1,10 +1,9 @@
 // Importamos las constantes
-import { EJEMPLO, EJEMPLO2 } from '../actions';
+import { EJEMPLO, GET_GENDERS } from '../actions';
 
 // Inicializamos el store. este objeto nos dara las distintas var/props que necesitaremos
 const initialState = {
-    // movies: [],
-    // movieDetail: {}
+    gendersDB: []
 }
 
 export default function rootReducer(state=initialState, action) {
@@ -14,9 +13,10 @@ export default function rootReducer(state=initialState, action) {
                 ...state,
                 movies: state.movies.concat(action.payload) // o con spread operator ==> movies: [...state.movies, action.payload], acumulamos lo que esta + lo que enviaron
             }
-        case EJEMPLO2:
+        case GET_GENDERS:
             return {
-                ...state
+                ...state,
+                gendersDB: action.payload
             }
         default:
             return {
