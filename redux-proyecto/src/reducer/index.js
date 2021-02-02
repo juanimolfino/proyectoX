@@ -1,9 +1,11 @@
 // Importamos las constantes
-import { EJEMPLO, GET_GENDERS } from '../actions';
+import { EJEMPLO, GET_GENDERS, GET_ALL_POST, GET_POST_BY_GENDER, } from '../actions';
 
 // Inicializamos el store. este objeto nos dara las distintas var/props que necesitaremos
 const initialState = {
-    gendersDB: []
+    gendersDB: [],
+    allPost: [],
+    selectedGenderPost: []
 }
 
 export default function rootReducer(state=initialState, action) {
@@ -17,6 +19,17 @@ export default function rootReducer(state=initialState, action) {
             return {
                 ...state,
                 gendersDB: action.payload
+            }
+        case GET_ALL_POST:
+            return {
+                ...state,
+                allPost: state.allPost.concat(action.payload)
+            }
+            case GET_POST_BY_GENDER:
+            console.log(action)
+            return {
+                ...state,
+                selectedGenderPost: [action.payload]
             }
         default:
             return {

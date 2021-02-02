@@ -4,6 +4,9 @@ import axios from 'axios'
 export const EJEMPLO = 'EJEMPLO';
 export const EJEMPLO2 = 'EJEMPLO2';
 export const GET_GENDERS = 'GET_GENDERS';
+export const GET_ALL_POST = 'GET_ALL_POST';
+export const DELETE_POST = 'DELETE_POST';
+export const GET_POST_BY_GENDER = 'GET_POST_BY_GENDER'
 
 // // FUNCION SINCRONA
 // export function nombre(payload) {
@@ -52,3 +55,39 @@ export function getGenders() {
             .catch(error => console.log('hubo un error', error));
     }
 }
+
+export function getAllPost() {
+    return function (dispatch) {
+        return fetch('http://localhost:8080/post')
+            .then(response => response.json())
+            .then(response => {
+                return dispatch({
+                    type: GET_ALL_POST,
+                    payload: response
+                });
+            })
+            .catch(error => console.log('hubo un error', error));
+    }
+}
+
+export function getPostByGender(gender) {
+    return function (dispatch) {
+        fetch(`http://localhost:8080/post/${gender}`)
+            .then(response => response.json())
+            .then(response => {
+                 dispatch({
+                    type: GET_POST_BY_GENDER,
+                    payload: response
+                })
+            })
+            .catch(error => console.log('hubo un error', error));
+    }
+}
+
+export function deletePostById(id) {
+    return function () {
+        axios.delete(`http://localhost:8080/post/deletePost`, { data: { _id: id } })
+
+    }
+}
+

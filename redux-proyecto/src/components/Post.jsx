@@ -3,9 +3,9 @@ import '../syles/Post.css'
 import { NavLink } from 'react-router-dom';
 
 
-function Post({ data, index, deletePost }) {
+function Post({ data,  deletePost }) {
     return (
-        <div className='Post' key={index}>
+        <div className='Post' >
             <div className='card-body'>
                 <NavLink to={`/edit/${data._id}`}>
                     <h1>{data.title}</h1>

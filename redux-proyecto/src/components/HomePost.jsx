@@ -1,36 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../syles/HomePost.css'
 import Post from './Post';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { getAllPost, deletePostById } from '../actions'
 
 
-function HomePost({ history }) {
-  const [postsData, setPostsData] = useState([]);
-  useEffect(function () {
-    fetch('http://localhost:8080/post')
-      .then(response => response.json())
-      .then(data => {
-        setPostsData(data);
-        //console.log(data)
-      })
-      .catch(error => console.log('hubo un error', error));
-  }, [])
+function HomePost({ history, getAllPost, allPost, deletePostById }) {
+  // const [postsData, setPostsData] = useState([]);
+  useEffect(() => {
+    getAllPost()
+  }, [getAllPost])
 
+  function handleDeletePost(id) {
+    deletePostById(id)
+    history.go() // refresca la pagina entonces re renderizan los componentes
+    // console.log(history) aca podes ver el objeto history para ver que nos sirve
 
-  function deletePostById(id) {
-    axios.delete(`http://localhost:8080/post/deletePost`, {data: {_id: id}})
-    .then(() => {
-      history.go() // refresca la pagina entonces re renderizan los componentes
-      // console.log(history) aca podes ver el objeto history para ver que nos sirve
-    })
   }
 
   return (
     <div className="HomePost">
-      {postsData.map((data, i) => <Post data={data} index={i} key={i} deletePost={deletePostById}/>)}
+      {allPost.map((data) => {
+        if (data) {
+          return <Post data={data} index={data._id} key={data._id} deletePost={handleDeletePost} />
+        }
+      })}
     </div>
   );
 }
 
-export default withRouter(HomePost)
+function mapStateToProps(state) {
+  return {
+    allPost: state.allPost // si necesitas mas propiedades del store las agregas al objeto. el nombre de la izquierda no importa le pones el que quieras.
+  }
+}
+
+export default connect(mapStateToProps, { getAllPost, deletePostById })(withRouter(HomePost));
