@@ -29,7 +29,7 @@ export default function rootReducer(state=initialState, action) {
             console.log(action)
             return {
                 ...state,
-                selectedGenderPost: [action.payload]
+                selectedGenderPost: action.payload
             }
         default:
             return {
