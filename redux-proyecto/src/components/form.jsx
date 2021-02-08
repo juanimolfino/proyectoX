@@ -4,14 +4,12 @@ import { withRouter } from 'react-router-dom'; // esto me permite traer el histo
 import Gender from './genders.jsx';
 
 // REDUX
-import { connect } from 'react-redux'; // nos permite conectar el componente de react con redux, nos habilita las props q necesita como estados del store redux y funciones de actions
-// import addTodo from '../actions' ejemplo
+import { connect } from 'react-redux'; 
 import { createPost, getGenders } from '../actions'
 
-// luego podemos usar por props las actions y los estados, props.blabla
-// un ejemplo de uso seria disparar un actions importado/conectado para usar para disparar un fetch o algo con useEffect al cargar la pagina
 
-function FormPost({ history, createPost, getGenders, genders }) { // el history lo importo con withrouter, supuestamente te sirve para manejar el historial del navegador
+
+function FormPost({ history, createPost, getGenders, genders }) { 
 // REACT STATES
     // State to DB
     const [input, setInput] = useState({
@@ -37,7 +35,10 @@ useEffect(() => {
     function handleSubmit(e) {
         e.preventDefault();
         createPost(input) // Actions redux - crea en la base de datos un post
-        .then(() => history.push('/'));
+        .then(() => {
+            history.push('/');
+            history.go();
+        });
         };
         
 // RENDER
@@ -70,10 +71,9 @@ useEffect(() => {
 
 function mapStateToProps(state) {
     return {
-      genders: state.gendersDB // si necesitas mas propiedades del store las agregas al objeto. el nombre de la izquierda no importa le pones el que quieras.
+      genders: state.gendersDB
     }
   }
 
 
 export default connect( mapStateToProps, { createPost, getGenders })(withRouter(FormPost));
-// export default connect( mapStateToProps, { createPost, getGenders })(FormPost);

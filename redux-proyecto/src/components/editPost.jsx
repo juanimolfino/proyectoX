@@ -32,8 +32,9 @@ function EditPost({ id, history }) {
         axios.put('http://localhost:8080/post/updatePost', postDataById)
         .then(() => console.log('Post Update'))
         .then(() => {
-            //history.go()
-            history.push('/')}
+            history.push('/')
+            history.go()
+            }
         )
         .catch(err => {
             console.error(err);
