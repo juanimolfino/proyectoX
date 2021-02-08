@@ -40,10 +40,10 @@ function GenderPost({ history, getPostByGender, postsData }) {
 
     return (
         <div className="HomePost">
-            {postsData.map((data) => {
-                if (data) {
-                    return <Post data={data} index={data._id} key={data._id} deletePost={deletePostById} />
-                }
+            {postsData.map((data, i) => {
+                //if (data) {
+                    return <Post data={data} index={data._id} key={i} deletePost={deletePostById} />
+                //}
             })}
         </div>
     //     <div className="HomePost">

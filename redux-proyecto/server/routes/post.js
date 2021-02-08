@@ -11,11 +11,11 @@ router.get('/', async (req, res) => {
 //
 router.get('/:gender', async (req, res) => {
     const {gender} = req.params
-    console.log(`paramsGender: ${gender}`)
+    //console.log(`paramsGender: ${gender}`)
     const choosenGender = await Gender.find({gender: gender})
-    console.log(`gender: ${choosenGender}`)
+    //console.log(`gender: ${choosenGender}`)
     const posts = await Post.find({gender: choosenGender}).populate('gender')
-    console.log(posts)
+    //console.log(posts)
     res.json(posts)
 })
 
@@ -33,6 +33,7 @@ router.get('/postById/:_id/', async (req, res) => {
         if (err) return console.log('Error al querer traer el post para editar', err);
         return data;
     });
+    // console.log(postById) muestra el post completo, es un objeto
     return res.json(postById);
 });
 

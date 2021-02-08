@@ -1,20 +1,17 @@
-// Importamos las constantes
-import { EJEMPLO, GET_GENDERS, GET_ALL_POST, GET_POST_BY_GENDER, } from '../actions';
+import { GET_GENDERS, GET_ALL_POST, GET_POST_BY_GENDER, 
+    //    GET_POST_BY_ID, HANDLE_UPDATE_FORM
+} from '../actions';
 
-// Inicializamos el store. este objeto nos dara las distintas var/props que necesitaremos
+
 const initialState = {
     gendersDB: [],
     allPost: [],
-    selectedGenderPost: []
+    selectedGenderPost: [],
+    //specificPost: {}
 }
 
 export default function rootReducer(state=initialState, action) {
     switch(action.type) {
-        case EJEMPLO:
-            return {
-                ...state,
-                movies: state.movies.concat(action.payload) // o con spread operator ==> movies: [...state.movies, action.payload], acumulamos lo que esta + lo que enviaron
-            }
         case GET_GENDERS:
             return {
                 ...state,
@@ -25,12 +22,24 @@ export default function rootReducer(state=initialState, action) {
                 ...state,
                 allPost: state.allPost.concat(action.payload)
             }
-            case GET_POST_BY_GENDER:
-            console.log(action)
+        case GET_POST_BY_GENDER:
+            //console.log(action)
             return {
                 ...state,
                 selectedGenderPost: action.payload
             }
+        // case GET_POST_BY_ID:
+        //     // console.log(action.payload)
+        //     return {
+        //         ...state,
+        //         specificPost: { ...action.payload }
+        //     }
+        // case HANDLE_UPDATE_FORM:
+        //     // console.log(action.payload)
+        //     return {
+        //         ...state,
+        //         specificPost: { ...action.payload }
+        //     }
         default:
             return {
                 ...state

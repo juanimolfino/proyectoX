@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import '../syles/MainNavBar.css'
-import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weather'>  </NavLink> 
+import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weather'>  </NavLink>
 
-function MainNavbar() {
+import { getGenders } from '../actions'
+import { connect } from 'react-redux'; 
+
+function MainNavbar({ getGenders, genders }) {
+
+    //console.log(genders)
+
+    useEffect(() => {
+        getGenders();
+    }, [getGenders])
+
     return <Navbar bg="dark" expand="lg" className='MainNavBar'>
                 <Navbar.Brand className='MainNavBar' href="/">YO NI ME ENROSCO!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -15,10 +25,14 @@ function MainNavbar() {
 
                
                 <NavDropdown  title="Generos" id="basic-nav-dropdown">
-                    <NavLink className='MainNavBar nav-link' to='/post/voodo'> Voodo </NavLink>
-                    <NavLink className='MainNavBar nav-link' to='/post/Garden'> Garden </NavLink>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    {
+                        genders.map((e, i) => {
+                            return <NavLink key={i} className='MainNavBar nav-link' to={`/post/${e.gender}`}> {e.gender} </NavLink>
+                        })
+                    }
+
+                    {/* <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>
                 </Nav>
                 <Form inline>
@@ -29,5 +43,10 @@ function MainNavbar() {
     </Navbar>
 }
 
+function mapStateToProps(state) {
+    return {
+      genders: state.gendersDB
+    }
+  }
 
-export default MainNavbar
+export default connect(mapStateToProps, { getGenders })(MainNavbar)

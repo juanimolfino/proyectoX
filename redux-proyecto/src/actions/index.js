@@ -1,34 +1,13 @@
 import axios from 'axios'
 
 // CONSTS
-export const EJEMPLO = 'EJEMPLO';
-export const EJEMPLO2 = 'EJEMPLO2';
 export const GET_GENDERS = 'GET_GENDERS';
 export const GET_ALL_POST = 'GET_ALL_POST';
 export const DELETE_POST = 'DELETE_POST';
-export const GET_POST_BY_GENDER = 'GET_POST_BY_GENDER'
+export const GET_POST_BY_GENDER = 'GET_POST_BY_GENDER';
+export const GET_POST_BY_ID = 'GET_POST_BY_ID';
+export const HANDLE_UPDATE_FORM = 'HANDLE_UPDATE_FORM';
 
-// // FUNCION SINCRONA
-// export function nombre(payload) {
-//     return {
-//         type: EJEMPLO,
-//         payload
-//     }
-// }
-
-// // FUNCION ASINCRONA
-// export function nombre(input_para_url) {
-//     return function(dispatch) {
-//         return fetch(URL+INPUT)
-//         .then(res => res.json())
-//         .then(json => {
-//             dispatch({
-//                 type: EJEMPLO,
-//                 payload: json
-//             });
-//         });
-//     };
-// };
 
 // FUNCTION - CREA UN POST EN LA BD
 export function createPost(input) {
@@ -87,7 +66,28 @@ export function getPostByGender(gender) {
 export function deletePostById(id) {
     return function () {
         axios.delete(`http://localhost:8080/post/deletePost`, { data: { _id: id } })
-
     }
 }
 
+
+export function getPostById(id) {
+    return function (dispatch) {
+        fetch(`http://localhost:8080/post/postById/${id}/`)
+            .then(response => response.json())
+            .then(response => {
+                 dispatch({
+                    type: GET_POST_BY_ID,
+                    payload: response
+                })
+            })
+            .catch(error => console.log('hubo un error', error));
+    }
+}
+
+export function handleChangeFormUpdate(post) {
+    console.log(post)
+    return {
+        type: HANDLE_UPDATE_FORM,
+        payload: post
+    }
+}

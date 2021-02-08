@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import '../syles/HomePost.css'
+import '../syles/HomePost.css';
 import Post from './Post';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { getAllPost, deletePostById } from '../actions'
+import { connect } from 'react-redux';
+import { getAllPost, deletePostById } from '../actions';
 
 
 function HomePost({ history, getAllPost, allPost, deletePostById }) {
@@ -21,10 +21,10 @@ function HomePost({ history, getAllPost, allPost, deletePostById }) {
 
   return (
     <div className="HomePost">
-      {allPost.map((data) => {
-        if (data) {
-          return <Post data={data} index={data._id} key={data._id} deletePost={handleDeletePost} />
-        }
+      {allPost.map((data, i) => {
+        //if (data) {
+          return <Post data={data} index={data._id} key={i} deletePost={handleDeletePost} />
+        //}
       })}
     </div>
   );
@@ -32,7 +32,7 @@ function HomePost({ history, getAllPost, allPost, deletePostById }) {
 
 function mapStateToProps(state) {
   return {
-    allPost: state.allPost // si necesitas mas propiedades del store las agregas al objeto. el nombre de la izquierda no importa le pones el que quieras.
+    allPost: state.allPost 
   }
 }
 
