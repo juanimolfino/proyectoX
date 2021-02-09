@@ -7,6 +7,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const GET_POST_BY_GENDER = 'GET_POST_BY_GENDER';
 export const GET_POST_BY_ID = 'GET_POST_BY_ID';
 export const HANDLE_UPDATE_FORM = 'HANDLE_UPDATE_FORM';
+export const POST_DELETED = 'POST_DELETED'
 
 
 // FUNCTION - CREA UN POST EN LA BD
@@ -64,8 +65,14 @@ export function getPostByGender(gender) {
 }
 
 export function deletePostById(id) {
-    return function () {
+    return function (dispatch) {
         axios.delete(`http://localhost:8080/post/deletePost`, { data: { _id: id } })
+        .then(() => {
+            dispatch({
+                type: POST_DELETED,
+                payload: id
+            })
+        })
     }
 }
 
