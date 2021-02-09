@@ -22,15 +22,12 @@ function MainNavbar({ getGenders, genders }) {
                 {/* <Nav.Link className='MainNavBar' href="#home">Home</Nav.Link> */}
                 <NavLink className='MainNavBar nav-link' to='/post/new'> Crear un nuevo post </NavLink>
                    {/*  <Nav.Link className='MainNavBar' href="#link">Crear un nuevo post</Nav.Link> */}
-
-               
                 <NavDropdown  title="Generos" id="basic-nav-dropdown">
                     {
                         genders.map((e, i) => {
                             return <NavLink key={i} className='MainNavBar nav-link' to={`/post/${e.gender}`}> {e.gender} </NavLink>
                         })
                     }
-
                     {/* <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>

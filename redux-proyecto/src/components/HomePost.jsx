@@ -5,26 +5,24 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllPost, deletePostById } from '../actions';
 
-
 function HomePost({ history, getAllPost, allPost, deletePostById }) {
   // const [postsData, setPostsData] = useState([]);
+
   useEffect(() => {
     getAllPost()
   }, [getAllPost])
 
-  function handleDeletePost(id) {
-    deletePostById(id)
-    history.go() // refresca la pagina entonces re renderizan los componentes
-    // console.log(history) aca podes ver el objeto history para ver que nos sirve
 
+  function handleDeletePost(id) {
+    deletePostById(id);
+   // history.go() // refresca la pagina entonces re renderizan los componentes
+    // console.log(history) aca podes ver el objeto history para ver que nos sirve
   }
 
   return (
     <div className="HomePost">
       {allPost.map((data, i) => {
-        //if (data) {
           return <Post data={data} index={data._id} key={i} deletePost={handleDeletePost} />
-        //}
       })}
     </div>
   );
