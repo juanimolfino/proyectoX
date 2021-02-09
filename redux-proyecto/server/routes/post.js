@@ -8,23 +8,22 @@ router.get('/', async (req, res) => {
     res.json(posts)
 })
 
-//
+// RUTA PARA TRAER LOS POST SEGUN GENERO
 router.get('/:gender', async (req, res) => {
     const {gender} = req.params
-    //console.log(`paramsGender: ${gender}`)
     const choosenGender = await Gender.find({gender: gender})
-    //console.log(`gender: ${choosenGender}`)
     const posts = await Post.find({gender: choosenGender}).populate('gender')
-    //console.log(posts)
+    // console.log(posts)
     res.json(posts)
 })
 
-// GET TO DB
+// GET TO DB LOS GENEROS
 router.get('/gender/getGender', async (req, res) => {
     const genders = await Gender.find({})
     res.json(genders)
 })
 
+// TRAE UN POST SEGUN SU ID
 router.get('/postById/:_id/', async (req, res) => {
     const { _id } = req.params;
     const postById = await Post.findOne({
@@ -63,7 +62,6 @@ router.delete('/deletePost', async (req, res) => {
 });
 
 // UPDATE POST
-
 router.put('/updatePost', async (req, res) => {
     const { _id, title, description } = req.body;    
 

@@ -10,14 +10,11 @@ function HomePost({ history, getAllPost, allPost, deletePostById, postDeleted })
 
   useEffect(() => {
     getAllPost()
-    console.log(postDeleted)
-  }, [getAllPost,postDeleted])
+  }, [getAllPost, postDeleted])
 
 
   function handleDeletePost(id) {
-  deletePostById(id)
-     // refresca la pagina entonces re renderizan los componente
-     // console.log(history) aca podes ver el objeto history para ver que nos sirve
+    deletePostById(id)
   }
 
   return (
