@@ -1,5 +1,13 @@
-.HomePost{
+.HomePost {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
 }
+
+@media only screen and (max-width: 600px) {
+        .HomePost {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+        }
+      }
