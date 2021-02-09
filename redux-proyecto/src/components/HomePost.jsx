@@ -7,25 +7,23 @@ import { getAllPost, deletePostById } from '../actions';
 
 
 function HomePost({ history, getAllPost, allPost, deletePostById, postDeleted }) {
-  // const [postsData, setPostsData] = useState([]);
+
   useEffect(() => {
     getAllPost()
     console.log(postDeleted)
   }, [getAllPost,postDeleted])
 
-  function handleDeletePost(id) {
-    deletePostById(id)
-     // refresca la pagina entonces re renderizan los componentes
-    // console.log(history) aca podes ver el objeto history para ver que nos sirve
 
+  function handleDeletePost(id) {
+  deletePostById(id)
+     // refresca la pagina entonces re renderizan los componente
+     // console.log(history) aca podes ver el objeto history para ver que nos sirve
   }
 
   return (
     <div className="HomePost">
-      {allPost.map((data) => {
-        //if (data) {
-          return <Post data={data} index={data._id} key={data._id} deletePost={handleDeletePost} />
-        //}
+      {allPost.map((data, i) => {
+          return <Post data={data} index={data._id} key={i} deletePost={handleDeletePost} />
       })}
     </div>
   );
