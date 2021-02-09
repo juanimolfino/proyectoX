@@ -5,18 +5,19 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllPost, deletePostById } from '../actions';
 
-function HomePost({ history, getAllPost, allPost, deletePostById }) {
-  // const [postsData, setPostsData] = useState([]);
+
+function HomePost({ history, getAllPost, allPost, deletePostById, postDeleted }) {
 
   useEffect(() => {
     getAllPost()
-  }, [getAllPost])
+    console.log(postDeleted)
+  }, [getAllPost,postDeleted])
 
 
   function handleDeletePost(id) {
-    deletePostById(id);
-   // history.go() // refresca la pagina entonces re renderizan los componentes
-    // console.log(history) aca podes ver el objeto history para ver que nos sirve
+  deletePostById(id)
+     // refresca la pagina entonces re renderizan los componente
+     // console.log(history) aca podes ver el objeto history para ver que nos sirve
   }
 
   return (
@@ -30,7 +31,8 @@ function HomePost({ history, getAllPost, allPost, deletePostById }) {
 
 function mapStateToProps(state) {
   return {
-    allPost: state.allPost 
+    allPost: state.allPost,
+    postDeleted: state.postDeleted 
   }
 }
 
