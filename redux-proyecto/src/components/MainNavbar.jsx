@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import '../syles/MainNavBar.css'
 import { NavLink } from 'react-router-dom'; // => se usa con <NavLink to='/weather'>  </NavLink>
+import SearchBar from './searchBar.jsx';
 
 import { getGenders } from '../actions'
 import { connect } from 'react-redux'; 
@@ -33,6 +34,7 @@ function MainNavbar({ getGenders, genders }) {
                 </NavDropdown>
                 </Nav>
             <Form inline>
+                <SearchBar />
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                 <Button variant="outline-success">Search</Button>
             </Form>
